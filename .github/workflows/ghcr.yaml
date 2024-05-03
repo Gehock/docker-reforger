@@ -48,7 +48,10 @@ jobs:
           name: image
       - name: Load Image
         run: docker load < image.tar.gz
+      - name: lowercase repo
+        run: |
+          echo "IMAGE_TAG_LOWER=${IMAGE_TAG@L}" >> "${GITHUB_ENV}"
       - name: Tag Image
-        run: docker tag arma-reforger "$IMAGE_TAG"
+        run: docker tag arma-reforger "$IMAGE_TAG_LOWER"
       - name: Push Image
-        run: docker push "$IMAGE_TAG"
+        run: docker push "$IMAGE_TAG_LOWER"
