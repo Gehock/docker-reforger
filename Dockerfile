@@ -29,6 +29,8 @@ RUN apt-get update \
     && \
     wget -qO- 'https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz' | tar zxf - -C /steamcmd
 
+RUN /steamcmd/steamcmd.sh +quit
+
 ENV STEAM_USER=""
 ENV STEAM_PASSWORD=""
 ENV STEAM_APPID="1874900"
